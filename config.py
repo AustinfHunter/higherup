@@ -11,16 +11,19 @@ def get_env_or_throw(key):
     try:
         env_var = environ.get(key)
     except KeyError:
-        raise Exception(f"MISSING ENVIRONMENT VARIABLE: {key}")
+        print(f"MISSING ENVIRONMENT VARIABLE: {key}")
+        quit(1)
     return env_var
 
 
 class Config:
     FLASK_DEBUG = get_env_or_throw("FLASK_DEBUG")
+    FLASK_ENV = get_env_or_throw("FLASK_ENV")
     SECRET_KEY = get_env_or_throw("SECRET_KEY")
 
     # Database
-    SQL_ALCHEMY_DB_URI = get_env_or_throw("DB_URI")\
-        or 'sqlite:///' + path.join(basedir, 'app.db')
-    SQL_ALCHEMY_TRACK_MODIFICATIONS =\
-        get_env_or_throw("SQL_ALCHEMY_TRACK_MODIFICATIONS")
+    SQLALCHEMY_DATABASE_URI = environ.get("DB_URI") or\
+        'sqlite:///' + path.join(basedir, 'app.db')
+    SQLALCHEMY_TRACK_MODIFICATIONS =\
+        environ.get("SQL_ALCHEMY_TRACK_MODIFICATIONS") or\
+        False
