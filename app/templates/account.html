@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid" id="grad1">
+    <div class="row justify-content-center mt-0">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2><strong>Account Creation</strong></h2>
+                <p>Fill all form field to go to next step</p>
+                <div class="row">
+                    <div class="col-md-12 mx-0">
+                        <form id="msform" action="#!">
+                            <div class="progressbar">
+                                <span class="active steps" id="account">Account Setup</span>
+                                <span class="steps">Job-Type</span>
+                                <span class="steps">Topics</span>
+                            </div>
+                            <div class="step">
+                                <div class="form-group">
+                                    <label for="name">Enter Name:</label>
+                                    <input type="text" class="form-control" placeholder="Name" id="name"
+                                        autocomplete="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Enter Email:</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" placeholder="Enter email" required>
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                        anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Enter Password:</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1"
+                                        placeholder="Password" required>
+                                </div>
+                                <p>What best describes you:</p>
+                                <button type="button" class="btn btn-primary">Student</button>
+                                <button type="button" class="btn btn-primary">Alumni</button>
+                            </div>
+                            <div class="step">
+                                <div class="row">
+                                    <div class="col">
+                                        <p>Lets Create a Filter</p>
+                                        <p>Job-Type:</p>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="internship"
+                                                name="jobType" value="Internship">
+                                            <label class="form-check-label" for="internship">Internship</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="coop" name="jobType"
+                                                value="CO-OP">
+                                            <label class="form-check-label" for="coop">CO-OP</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="temporary"
+                                                name="jobType" value="Temporary">
+                                            <label class="form-check-label" for="temporary">Temporary</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="fulltime" name="jobType"
+                                                value="Full-Time">
+                                            <label class="form-check-label" for="fulltime">Full-Time</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="parttime" name="jobType"
+                                                value="Part-Time">
+                                            <label class="form-check-label" for="parttime">Part-Time</label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <p>Company(optional)</p>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="tiaa" name="company"
+                                                value="TIAA">
+                                            <label class="form-check-label" for="tiaa">TIAA</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="lowes" name="company"
+                                                value="Lowes">
+                                            <label class="form-check-label" for="lowes">Lowes</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="duke" name="company"
+                                                value="Duke">
+                                            <label class="form-check-label" for="duke">Duke</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="deloitte" name="company"
+                                                value="Deloitte">
+                                            <label class="form-check-label" for="deloitte">Deloitte</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="brooksource"
+                                                name="company" value="Brooksource">
+                                            <label class="form-check-label" for="brooksource">Brooksource</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="fidelity" name="company"
+                                                value="Fidelity">
+                                            <label class="form-check-label" for="fidelity">Fidelity</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="hartford" name="company"
+                                                value="HartFord">
+                                            <label class="form-check-label" for="hartford">HartFord</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="wellsfargo"
+                                                name="company" value="Wells Fargo">
+                                            <label class="form-check-label" for="wellsfargo">Wells Fargo</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <p>Topics:</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="interview" name="topics"
+                                                value="Interview">
+                                            <label class="form-check-label" for="interview">Interview</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="careerfair"
+                                                name="topics" value="Career Fair">
+                                            <label class="form-check-label" for="careerfair">Career Fair</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="skillssets"
+                                                name="topics" value="Skills Sets">
+                                            <label class="form-check-label" for="skillssets">Skills Sets</label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="technicalinterview"
+                                                name="topics" value="Technical Interview">
+                                            <label class="form-check-label" for="technicalinterview">Technical
+                                                Interview</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="applying" name="topics"
+                                                value="Applying">
+                                            <label class="form-check-label" for="applying">Applying</label>
+                                        </div>
+                                        <div class="custom-margin">
+                                            <input type="checkbox" class="form-check-input" id="behavioralinterview"
+                                                name="topics" value="Behavioral Interview">
+                                            <label class="form-check-label" for="behavioralinterview">Behavioral
+                                                Interview</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-margin">
+                                    <label for="FormControlTextarea1">Soft/Technical Skills</label>
+                                    <textarea class="form-control" id="FormControlTextarea1" name="skills" rows="3"
+                                        placeholder="Enter Skills"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-footer">
+                                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
