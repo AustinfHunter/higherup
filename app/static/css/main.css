@@ -1,19 +1,35 @@
 .site-footer{
     background-color: gray;
-    padding: 20px 0;
+    padding: 5px;
     width: 100%;
     bottom: 0;
     left: 0;
     position: fixed;
+    color: white;
 }
  .site-footer .container{
    width: 100%;
 }
- .site-footer .footer-links{
+ .site-footer .footer-links2{
     list-style-type: none;
     padding: 0;
 }
- .site-footer .footer-links li{
+.site-footer .footer-links{
+    list-style-type: none;
+    padding: 0;
+}
+.site-footer .footer-links2 li{
     display: inline;
 }
- 
+.site-footer .footer-links2 li a{
+    display: inline;
+    color: white;
+}
+.site-footer .footer-links a{
+    text-decoration: none;
+    color:white;
+    margin-right: 30px;
+}
+.site-footer .footer-links li{
+list-style-type: none;
+}
