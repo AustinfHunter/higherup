@@ -21,9 +21,6 @@ def account():
 @bp.route('/officalAccount')
 def user_account():
     return render_template('userAccount.html')
-@bp.route('/login')
-def login():
-    return render_template('login.html')
 
 
 @bp.route('/register', methods=["GET", "POST"])
