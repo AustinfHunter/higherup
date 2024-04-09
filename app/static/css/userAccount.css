@@ -1,0 +1,27 @@
+.pfp{
+    border-radius: 15px 50px 30px;
+}
+
+.accountInfo{
+    display: flex;
+}
+
+.typeUser{
+    text-align: center;
+    background-color: #ADD8E6;
+    width: auto; /* Set a wider width */
+    border-radius: 10px; /* Apply rounded borders */
+    padding: 5px;
+}
+
+.jobType, .companies{
+    list-style-type: none 
+}
+
+.jobType li, .companies li{
+    text-align: center;
+    background-color: #ADD8E6;
+    width: auto; /* Set a wider width */
+    border-radius: 10px; /* Apply rounded borders */
+    padding: 5px;
+}
