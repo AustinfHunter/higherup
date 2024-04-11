@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}HigherUp: Preferences{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/preferences.js')}}"></script>{% endblock %}
+{% block content %}
+<div class="container-fluid">
+<h1 class="h1 text-center">Account Preferences</h1>
+	<div class="d-flex justify-content-center">
+		<form method="POST" class="form-group w-50">
+			{{ form.csrf_token }}
+			<div class="form-group m-auto mb-5">
+				<label for="jobTypes" class="lead">Job Types</label>
+				{{ form.job_types(class="list-group", id="jobTypes") }}
+			</div>
+			<div class="form-group m-auto mb-5">
+				<label for="topics">Forum Topics</label>
+				{{ form.topics(class="list-group", id="topics") }}
+			</div>
+			<div class="form-group m-auto mb-5">
+				<label for="skills" class="lead">Skills</label>
+				{{ form.skills(class="list-group", id="skills") }}
+			</div>
+			<div class="form-group m-auto mb-3 lead">
+				<label for="companies" class="lead">Companies</label>
+				{{ form.companies(class="list-group", id="companies") }}
+			</div>
+			<div class="m-auto">
+			<input class="mb-3 btn btn-success btn-lg m-auto" type="submit" value="Update Preferences">
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,10 +1,13 @@
+.content {
+	min-height: 100vh;
+}
+
 .site-footer{
     background-color: gray;
     padding: 5px;
     width: 100%;
     bottom: 0;
     left: 0;
-    position: fixed;
     color: white;
 }
  .site-footer .container{

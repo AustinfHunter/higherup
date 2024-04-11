@@ -35,7 +35,10 @@ function showTab(n) {
             prevBtn.style.display = "inline";
         }
         if (n === x.length - 1) {
-            nextBtn.innerHTML = "Submit";
+			let submitBtn = document.createElement("input");
+			submitBtn.type = "submit";
+			submitBtn.value = "Create Account";
+            nextBtn.replaceWith(submitBtn);
         } else {
             nextBtn.innerHTML = "Next";
         }
