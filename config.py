@@ -21,6 +21,11 @@ class Config:
     FLASK_ENV = get_env_or_throw("FLASK_ENV")
     SECRET_KEY = get_env_or_throw("SECRET_KEY")
 
+    # Admin variables
+    ADMIN_UNAME = get_env_or_throw("ADMIN_UNAME")
+    ADMIN_EMAIL = get_env_or_throw("ADMIN_EMAIL")
+    ADMIN_PASSWORD = get_env_or_throw("ADMIN_PASSWORD")
+
     # Database
     SQLALCHEMY_DATABASE_URI = environ.get("DB_URI") or\
         'sqlite:///' + path.join(basedir, 'app.db')
