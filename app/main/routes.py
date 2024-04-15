@@ -10,20 +10,12 @@ from app.models.user import User
 
 @bp.route('/')
 def index():
-    return render_template('index.html')
-  
+    return render_template('index.html', user=current_user)
+
+
 @bp.route('/search')
 def search():
-    return render_template('search.html')
-@bp.route('/account1')
-def account():
-    return render_template('account.html')
-@bp.route('/officalAccount')
-def user_account():
-    return render_template('userAccount.html')
-@bp.route('/login')
-def login():
-    return render_template('login.html')
+    return render_template('search.html', user=current_user)
 
 
 @bp.route('/register', methods=["GET", "POST"])
@@ -39,8 +31,7 @@ def register():
 
         login_user(user)
         flash("Registration successfull! You are now logged in", "success")
-
-        return redirect("main.index")
+        return redirect(url_for("users.preferences"))
     return render_template("register.html", form=form)
 
 
@@ -52,15 +43,14 @@ def login():
     form = LoginForm(request.form)
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        password_valid = bcrypt.check_password_hash(
-            user.password,
-            request.form["password"]
-        )
-
-        if user and password_valid:
+        if user and bcrypt.check_password_hash(
+                user.password,
+                request.form["password"]):
             login_user(user)
+            print("User logged in")
             return redirect(url_for("main.index"))
         else:
+            print("user not logged in")
             flash("Invalid email or password.", "danger")
     return render_template("login.html", form=form)
 

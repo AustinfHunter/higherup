@@ -71,6 +71,7 @@
       background-color: #fff;
       color: #009688;
 }
+
 #msform .form-footer button{
     background-color: #009688;
     border: 1px solid #009688 !important;
@@ -84,6 +85,18 @@
     margin-top: 5px;
 }
 
+#msform .form-footer input[type="submit"]{
+    background-color: #009688;
+    border: 1px solid #009688 !important;
+    color: #ffffff;
+    border: none;
+    padding: 13px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    flex: 1;
+    margin-top: 5px;
+}
 
 .custom-margin{
     margin-top: 10px;
