@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap');
+
+*{
+    font-family: "ABeeZee", sans-serif;
+}
+
+section{
+    position: relative;
+    margin:0;
+    width: 100%;
+    display: inline-block;
+    background: #AFC7E259;
+} 
+
+section h1, section h6, .dropdowns{
+    margin: 0 50px;
+    gap: 10px;
+
+}
+
+.drop{
+    background-color: gray;
+}
+.dropdowns{
+    display: flex;
+}
+
+.custom-shape-divider-top-1713146849 {
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    margin: 0;
+}
+
+.custom-shape-divider-top-1713146849 svg {
+    position: relative;
+    display: block;
+    width: calc(137% + 1.3px);
+    height: 186px;
+}
+
+.custom-shape-divider-top-1713146849 .shape-fill {
+    fill: #AFC7E259;
+}
+
+.companies {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.companyDisplay{
+    width: 150px;
+    height: 85px;
+    margin: 30px;
+    position: relative;
+}
+
+.companyDisplay p{
+    color: white;
+    isolation: isolate;
+    padding-top: 20px;
+}
+
+.comOne::Before{
+    background-image: url("comOne.jpg");
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .6), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    content: '';
+    position: absolute; 
+    /* opacity: 0.2; */
+    filter: brightness(45%);
+    inset:0;
+}
+
+.comTwo::Before{
+    background-image: url("comTwo.jpg");
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .6), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    content: '';
+    position: absolute; 
+    /* opacity: 0.2; */
+    filter: brightness(45%);
+    inset:0;
+}
+
+.comThree::Before{
+    background-image: url("comThree.jpg");
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .6), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    content: '';
+    position: absolute; 
+    /* opacity: 0.2; */
+    filter: brightness(45%);
+    inset:0;
+}
+
+.comFour:Before{
+    background-image: url("comFour.jpg");
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .6), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    content: '';
+    position: absolute; 
+    /* opacity: 0.2; */
+    filter: brightness(45%);
+    inset:0;
+}
+
+.comFive::Before{
+    background-image: url("comFive.jpg");
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .6), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    content: '';
+    position: absolute; 
+    /* opacity: 0.2; */
+    filter: brightness(45%);
+    inset:0;
+}
+
+.comSix::Before{
+    background-image: url("comSix.jpg");
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .6), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    content: '';
+    position: absolute; 
+    /* opacity: 0.2; */
+    filter: brightness(45%);
+    inset:0;
+}
+
+.popReviews{
+    text-align: center;
+}
