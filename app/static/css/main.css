@@ -2,7 +2,7 @@
 	min-height: 100vh;
 }
 
-.footer {
+.site-footer{
     background-color: gray;
     color: #555;
     font-size: 14px; /* Adjust font size */
