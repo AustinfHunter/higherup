@@ -3,7 +3,6 @@
 *{
     font-family: "ABeeZee", sans-serif;
 }
-
 section{
     position: relative;
     margin:0;
@@ -11,13 +10,11 @@ section{
     display: inline-block;
     background: #AFC7E259;
 } 
-
 section h1, section h6, .dropdowns{
     margin: 0 50px;
     gap: 10px;
 
 }
-
 .drop{
     background-color: gray;
 }

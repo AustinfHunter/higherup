@@ -60,3 +60,7 @@ def logout():
     logout_user()
     flash("You were successfully logged out", "success")
     return redirect(url_for("main.login"))
+
+@bp.route("/company")
+def company():
+    return render_template("companySpecific.html", user=current_user)

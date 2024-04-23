@@ -1,13 +1,10 @@
-.content {
-	min-height: 100vh;
-}
 
-.site-footer{
+
+.footer{
     background-color: gray;
     color: #555;
-    font-size: 14px; /* Adjust font size */
-  }
-  
+    font-size: 14px; 
+}
   .footer h6 {
     color: #555; /* Customize heading color */
     font-weight: bold; /* Apply bold font weight to headings */
@@ -42,9 +39,9 @@
  body {
    display: flex;
    flex-direction: column;
-   height: 100vh;
+   min-height: 100vh;
  }
- 
+
  footer {
    margin-top: auto;
  }
