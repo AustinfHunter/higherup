@@ -7,7 +7,7 @@ $( document ).ready(() => {
 const likePost = (e) => {
 	let id = e.target.id.split("-")[1];
 	$.ajax({
-		url: `posts/like-post?post_id=${id}`,
+		url: `/posts/like-post?post_id=${id}`,
 		method: "POST",
 		})
 		.done((data) => {
