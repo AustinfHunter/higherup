@@ -103,7 +103,7 @@ footer {
 .post-content {
 	display: flex;
 	align-items: center;/* Align items vertically */
-	justify-content: center;
+	/*justify-content: center; */
 }
 
 
