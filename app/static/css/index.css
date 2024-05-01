@@ -3,6 +3,60 @@ html, body {
 	width: 100%;
 }
 
+.footer{
+	background-color: gray;
+	color: #555;
+	font-size: 14px; 
+}
+
+.footer h6 {
+	color: #555; /* Customize heading color */
+	font-weight: bold; /* Apply bold font weight to headings */
+}
+
+.footer p {
+	line-height: 1.5; /* Set line height for paragraphs */
+}
+
+.footer .footer-links2{
+	list-style-type: none;
+	padding: 0;
+}
+
+.footer .footer-links{
+	list-style-type: none;
+	padding: 0;
+}
+
+.footer .footer-links2 li{
+	display: inline;
+}
+
+.footer .footer-links2 li a{
+	display: inline;
+	color: #555;
+}
+
+.footer .footer-links a{
+	text-decoration: none;
+	color:#555;
+	margin-right: 30px;
+}
+
+.footer .footer-links li{
+	list-style-type: none;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+footer {
+	margin-top: auto;
+}
+
 .post {
 	background-color: #ffffff;
 	border: 1px solid #e0e0e0;
@@ -12,6 +66,25 @@ html, body {
 	margin-bottom: 20px; /* Add margin between posts */
 }
 
+.comment {
+	background-color: #ffffff;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin-bottom: 20px; /* Add margin between posts */
+	width: 60%;
+	margin: auto;
+}
+
+.comment-text-area {
+	max-width: 60%;
+	margin: auto;
+}
+
+.comments-header {
+	text-align: center;
+}
 
 .post-title {
 	color: #333333;
@@ -29,7 +102,8 @@ html, body {
 
 .post-content {
 	display: flex;
-	align-items: center; /* Align items vertically */
+	align-items: center;/* Align items vertically */
+	justify-content: center;
 }
 
 

@@ -58,6 +58,21 @@ post_job_type = db.Table(
 )
 
 
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    content = db.Column(db.String(1500), nullable=False)
+
+    def __init__(self, post_id, author_id, content):
+        self.post_id = post_id
+        self.author_id = author_id
+        self.content = content
+
+    def get_author(self):
+        return User.query.filter_by(id=self.author_id).first()
+
+
 class PostLike(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -98,6 +113,11 @@ class Post(db.Model):
         secondary='post_like',
         backref='post_likes',
         lazy='dynamic',
+    )
+    comments = db.relationship(
+        'Comment',
+        backref='post',
+        lazy='dynamic'
     )
 
     def __init__(self, title, content, author_id):

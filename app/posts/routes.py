@@ -3,14 +3,16 @@ from app.models.topic import Topic
 from app.models.jobtype import JobType
 from app.models.skill import Skill
 from app.models.company import Company
-from app.models.post import Post, PostLike
+from app.models.post import Post, PostLike, Comment
 from app.models.user import User
 from app.posts import bp
-from app.posts.forms import PostForm
+from app.posts.forms import PostForm, CommentForm
 
 
-from flask import render_template, redirect, url_for, request, Response
+from flask import render_template, redirect, url_for, request
 from flask_login import login_required, current_user
+
+import sys
 
 
 @bp.route('/')
@@ -27,12 +29,39 @@ def index():
     return render_template('posts.html', user=current_user, posts=posts)
 
 
+@bp.route('/<int:post_id>')
+def post(post_id):
+    form = CommentForm()
+    post = Post.query.filter_by(id=post_id).first()
+    comments = post.comments.all()
+    if current_user.is_authenticated:
+        user_likes = current_user.liked_posts.all()
+    return render_template(
+        'post.html',
+        post=post,
+        comments=comments,
+        form=form,
+        user=current_user,
+        user_likes=user_likes
+    )
+
+
+@bp.route('/add-comment/<int:post_id>', methods=["POST"])
+@login_required
+def add_comment(post_id):
+    form = CommentForm()
+
+    if form.validate_on_submit():
+        print("adding comment", file=sys.stdout)
+        comment = Comment(post_id, current_user.id, form.content.data)
+        db.session.add(comment)
+        db.session.commit()
+    return redirect(url_for('posts.post', post_id=post_id))
+
+
 @bp.route("/createpost", methods=["GET", "POST"])
 @login_required
 def createpost():
-    author = User.query.filter_by(id=current_user.id).first()
-    if not author:
-        return redirect(url_for("main.login"))
     form = PostForm()
     form.topics.query = Topic.query.all()
     form.skills.query = Skill.query.all()
@@ -40,7 +69,7 @@ def createpost():
     form.companies.query = Company.query.all()
 
     if form.validate_on_submit():
-        post = Post(form.title.data, form.content.data, author.id)
+        post = Post(form.title.data, form.content.data, current_user.id)
         post.topics = form.topics.data
         post.companies = form.companies.data
         post.skills = form.skills.data
@@ -48,9 +77,9 @@ def createpost():
 
         db.session.add(post)
         db.session.commit()
-        redirect(url_for("posts/" + post.id))
+        redirect(url_for('posts.post', post_id=post.id))
 
-    return render_template("post.html", form=form, user=current_user)
+    return render_template("postEditor.html", form=form, user=current_user)
 
 
 @bp.route("/like-post", methods=["POST"])

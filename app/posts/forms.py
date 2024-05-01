@@ -22,3 +22,11 @@ class PostForm(FlaskForm):
     skills = CheckboxQuerySelectMultipleField('Skills')
     job_types = CheckboxQuerySelectMultipleField('Job Type')
     companies = CheckboxQuerySelectMultipleField('Companies')
+
+
+class CommentForm(FlaskForm):
+    content = TextAreaField(
+        'Comment',
+        validators=[validators.input_required(), validators.length(150, 1500)],
+        name='content'
+    )
