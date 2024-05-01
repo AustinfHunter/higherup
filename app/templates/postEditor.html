@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/preferences.js')}}"></script>{% endblock %}
+{% block content %}
+<div class="container">
+	<form method="POST" action="/posts/createpost">
+		{{ form.csrf_token }}
+		<div class="form-group">
+			<label for="title">Title</label>
+			{{ form.title(class="form-control", id="title", placeholder="Enter Title") }}
+		</div>
+		<div class="form-group">
+			<label for="content">Post Content</label>
+			{{ form.content(class="form-control", id="content", rows="8", placeholder="Enter Content") }}
+		</div>
+
+		<div id="accordion">	   
+			<div class="card mb-1">
+				<div class="card-header" id="topicsCardHeader">
+					<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#topicsCollapse" aria-expanded="true" aria-controls="topicsCollapse" type="button">
+						<p class="lead">Topics</p>
+					</button>
+				</div>
+				<div id="topicsCollapse" class="collapse show" aria-labelledby="topicsCardHeader" data-parent="#accordion">
+					<div class="form-group">
+						<label for="topics">Topics</label>
+						{{ form.topics(class="form-select") }}
+					</div>
+				</div>
+			</div>
+
+			<div class="card mb-1">
+				<div class="card-header" id="CompaniesCardHeader">
+					<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#companiesCollapse" aria-expanded="false" aria-controls="companiesCollapse" type="button">
+						<p class="lead">Companies</p>
+					</button>
+				</div>
+				<div id="companiesCollapse" class="collapse" aria-labelledby="topicsCardHeader" data-parent="#accordion">
+					<div class="form-group">
+						<label for="companies">Companies</label>
+						{{ form.companies(class="form-select") }}
+					</div>
+				</div>
+			</div>
+
+			<div class="card mb-1">
+				<div class="card-header" id="skillsCardHeader">
+					<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#skillsCollapse" aria-expanded="false" aria-controls="skillsCollapse" type="button">
+						<p class="lead">Skills</p>
+					</button>
+				</div>
+				<div id="skillsCollapse" class="collapse" aria-labelledby="skillsCardHeader" data-parent="#accordion">
+					<div class="form-group">
+						<label for="skills">Skills</label>
+						{{ form.skills(class="form-select") }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<input class="mb-3 ms-6 btn btn-success btn-lg m-auto" type="submit" value="Create Post">                      
+	</form>
+</div>
+{% endblock %}

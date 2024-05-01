@@ -86,6 +86,13 @@ class User(UserMixin, db.Model):
             secondary=user_company,
             backref='company'
     )
+    liked_posts = db.relationship(
+        'Post',
+        secondary='post_like',
+        backref='user_likes',
+        lazy='dynamic',
+        viewonly=True,
+    )
 
     def __init__(self, user_name, email, password, is_admin=False):
         self.user_name = user_name

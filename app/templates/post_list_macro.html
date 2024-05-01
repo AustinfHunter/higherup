@@ -1,0 +1,28 @@
+{% macro list_posts(posts, user_likes) %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/posts.js') }}"></script>
+{% endblock %}
+{% for post in posts %}
+	<div class="post">
+		<div class="post-content">
+			<div class="arrow-container">
+			{% if post in user_likes %}
+				<i id="like-{{ post.id }}" class="bi bi-arrow-up-circle-fill arrow-icon"></i>
+			{% else %}
+				<i id="like-{{ post.id }}" class="bi bi-arrow-up-circle arrow-icon"></i>
+			{% endif %}
+				<p id="like-count-{{ post.id }}" class="number">{{ post.likes.count() }}</p>
+			</div>
+			<div>
+				<h2 class="post-title"><a href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+				<p class="post-description">{{ post.content }}</p>
+				<hr>
+				<div class="posted-by">
+					<i class="bi bi-person-circle"></i>
+					<p class="mb-0">{{ post.get_author().user_name }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}
+{% endmacro %}

@@ -34,7 +34,8 @@ def create_app(config_class=Config):
     app.register_blueprint(main_bp, url_prefix='/')
     from app.users import bp as user_bp
     app.register_blueprint(user_bp, url_prefix="/users")
-
+    from app.posts import bp as post_bp
+    app.register_blueprint(post_bp, url_prefix="/posts")
     return app
 
 from app.models.user import User
