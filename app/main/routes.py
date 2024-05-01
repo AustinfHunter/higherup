@@ -1,21 +1,44 @@
 from flask import render_template, flash, request, url_for, redirect
 from flask_login import login_user, logout_user, current_user
 
+from sqlalchemy import func
+
 from app.main.forms import RegistrationForm, LoginForm
 
 from app import db, bcrypt
 from app.main import bp
 from app.models.user import User
+from app.models.post import Post, PostLike
+
+import sys
 
 
 @bp.route('/')
 def index():
-    return render_template('index.html', user=current_user)
+    posts = Post.get_popular_posts()
+    if current_user.is_authenticated:
+        user_likes = current_user.liked_posts.all()
+        return render_template(
+            'index.html',
+            user=current_user,
+            user_likes=user_likes,
+            posts=posts)
+    return render_template('index.html', user=current_user, posts=posts)
 
 
-@bp.route('/search')
-def search():
-    return render_template('search.html', user=current_user)
+@bp.route('/posts')
+def posts():
+    posts = Post.get_popular_posts()
+    print(posts, file=sys.stdout)
+    if current_user.is_authenticated:
+        user_likes = current_user.liked_posts.all()
+        return render_template(
+            'search.html',
+            user=current_user,
+            user_likes=user_likes,
+            posts=posts
+        )
+    return render_template('search.html', user=current_user, posts=posts)
 
 
 @bp.route('/register', methods=["GET", "POST"])
@@ -61,6 +84,14 @@ def logout():
     flash("You were successfully logged out", "success")
     return redirect(url_for("main.login"))
 
+
 @bp.route("/company")
 def company():
     return render_template("companySpecific.html", user=current_user)
+
+
+@bp.route("/test-headless")
+def test_headless():
+    if current_user.is_authenticated:
+        return {"Authenticated": "true"}
+    return {"Authenticated": "false"}

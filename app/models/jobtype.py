@@ -10,3 +10,6 @@ class JobType(db.Model):
 
     def __str__(self):
         return self.name
+
+    def to_dict(self):
+        return {'id': self.id, 'name': self.name}
