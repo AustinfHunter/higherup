@@ -1,7 +1,12 @@
 $( document ).ready(() => {
 	let likeButtons = $('[id^="like-"]');
-	console.log(likeButtons);
 	likeButtons.click(likePost);
+
+	let deletePostButtons = $('[id^="delete-post-"]');
+	deletePostButtons.click(deletePost);
+	
+	let deleteCommentButtons = $('[id^="delete-comment-"]');
+	deleteCommentButtons.click(deleteComment);
 });
 
 const likePost = (e) => {
@@ -29,4 +34,30 @@ const likePost = (e) => {
 				likeCountElem.html(count);
 			}
 	})
+}
+
+const deletePost = (e) => {
+	if (confirm("Are you sure you want to delete this post?")) {
+		let id = e.target.id.split("-")[2];
+		$.ajax({
+			url: `/posts/deletepost/${id}`,
+			method: "DELETE",
+			})
+			.done(() => {
+				location.reload();
+		})
+	}
+}
+
+const deleteComment = (e) => {
+	if (confirm("Are you sure you want to delete this comment?")) {
+		let id = e.target.id.split("-")[2];
+		$.ajax({
+			url: `/posts/deletecomment/${id}`,
+			method: "DELETE",
+			})
+			.done(() => {
+				location.reload();
+		})
+	}
 }

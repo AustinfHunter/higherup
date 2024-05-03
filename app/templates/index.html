@@ -105,7 +105,7 @@ main {
 <h2>Popular Threads</h2>
 <div class="container-fluid">
 	{% from "post_list_macro.html" import list_posts %}
-	{{ list_posts(posts, user_likes) }}
+	{{ list_posts(posts, user_likes, user) }}
 </div>
 </div>
 {% endblock %}

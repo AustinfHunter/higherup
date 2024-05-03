@@ -17,11 +17,16 @@
 			<h2 class="post-title">{{ post.title }}</h2>
 			<p class="post-description">{{ post.content }}</p>
 			<hr>
-			<div class="posted-by">
-				<i class="bi bi-person-circle"></i>
-			<p class="mb-0">{{ post.get_author().user_name }}</p>
-			</div>
 		</div>
+	</div>
+	<div class="posted-by d-flex justify-content-between">
+		<div class="d-flex align-items-center">
+			<i class="bi bi-person-circle"></i>
+			<p class="mb-0">{{ post.get_author().user_name }}</p>
+		</div>
+		{% if user and post.author_id == user.id %}
+		<i class="bi bi-trash" style="color: red;" id="delete-post-{{post.id}}"></i>
+		{% endif %}
 	</div>
 </div>
 
@@ -36,17 +41,22 @@
 {% endif %}
 
 <div class="container-fluid">
-<h2 class="comments-header">Comments</h2>
+	<h2 class="comments-header">Comments</h2>
 	{% for comment in comments %}
 	<div class="comment">
-		<div class="post-content">
+		<div class="post-content d-flex row">
 			<div>
 				<p class="post-description">{{ comment.content }}</p>
 				<hr>
-				<div class="posted-by">
+			</div>
+			<div class="posted-by d-flex justify-content-between">
+				<div class="d-flex align-items-center">
 					<i class="bi bi-person-circle"></i>
-				<p class="mb-0">{{ comment.get_author().user_name }}</p>
+					<p class="mb-0">{{ comment.get_author().user_name }}</p>
 				</div>
+				{% if user and comment.author_id == user.id %}
+				<i class="bi bi-trash" style="color: red;" id="delete-comment-{{comment.id}}"></i>
+				{% endif %}
 			</div>
 		</div>
 	</div>

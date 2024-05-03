@@ -85,6 +85,17 @@ def createpost():
     return render_template("postEditor.html", form=form, user=current_user)
 
 
+@bp.route("/deletepost/<int:id>", methods=["DELETE"])
+@login_required
+def deletepost(id):
+    post = Post.query.filter_by(id=id).first()
+    if post.author_id == current_user.id:
+        db.session.delete(post)
+        db.session.commit()
+        return {"postUpdate": "deleted"}
+    return {"postUpdate": "unchanged"}
+
+
 @bp.route("/like-post", methods=["POST"])
 @login_required
 def likepost():
@@ -102,3 +113,14 @@ def likepost():
         db.session.add(new_like)
         db.session.commit()
         return {"likeUpdate": "added"}
+
+
+@bp.route("/deletecomment/<int:id>", methods=["DELETE"])
+@login_required
+def deletecomment(id):
+    comment = Comment.query.filter_by(id=id).first()
+    if comment.author_id == current_user.id:
+        db.session.delete(comment)
+        db.session.commit()
+        return {"commentUpdate": "deleted"}
+    return {"commentUpdate": "unchanged"}
