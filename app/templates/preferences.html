@@ -2,11 +2,14 @@
 {% block title %}HigherUp: Preferences{% endblock %}
 {% block scripts %}<script src="{{ url_for('static', filename='js/preferences.js')}}"></script>{% endblock %}
 {% block content %}
-<div class="card">
-
+<h1 class="text-center mb-3">Account Details</h1>
+<div class="container-fluid w-50 card d-flex justify-content-center align-items-center mb-5">
+	<h2>{{ user.user_name }}</h2>
+	<p class="lead">Email: {{ user.email }}</p>
+<button class="text-center btn btn-success btn-md mb-3"><a class="text-center text-white" href="/logout">Logout</a></button>
 </div>
 <div class="container-fluid">
-<h1 class="h1 text-center">Account Preferences</h1>
+<h1 class="h2 text-center">Account Preferences</h1>
 	<div class="d-flex justify-content-center">
 		<form method="POST" class="form-group w-50">
 			{{ form.csrf_token }}
