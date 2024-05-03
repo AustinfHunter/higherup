@@ -67,6 +67,16 @@ If there are major changes to the models during development, it is best to drop 
 3. ```db.drop_all()``` (Drops all tables)
 4. ```db.create_all()``` (Creates all tables using up-to-date models)
 
+### Adding Default Data to Database
+Run ```flask shell``` then run the following commands
+```from app import db
+from app.util import startup
+startup.addAllDefaults(db) # Adds all default values to database
+startup.createAdmin(app, db) # creates a user with admin privileges
+```
+Note: The environment variables ADMIN_UNAME, ADMIN_EMAIL, and ADMIN_PASSWORD must be set
+in order for createAdmin to run successfully.
+
 ## Project Structure
 Your project structure should look like this by the time you're done with all of the above.
 ```
