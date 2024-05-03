@@ -113,3 +113,14 @@ def likepost():
         db.session.add(new_like)
         db.session.commit()
         return {"likeUpdate": "added"}
+
+
+@bp.route("/deletecomment/<int:id>", methods=["DELETE"])
+@login_required
+def deletecomment(id):
+    comment = Comment.query.filter_by(id=id).first()
+    if comment.author_id == current_user.id:
+        db.session.delete(comment)
+        db.session.commit()
+        return {"commentUpdate": "deleted"}
+    return {"commentUpdate": "unchanged"}
