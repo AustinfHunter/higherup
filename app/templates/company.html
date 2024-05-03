@@ -3,7 +3,11 @@
 {% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/companySpecific.css')}}">
 {% endblock %}
 {% block content %}
+{% if company.image_url %}
 <section class="bg-img" style='background-image: url({{ url_for('static', filename="images/uploads/" + company.image_url)  }});'>
+{% else %}
+<section class="bg-img">
+{% endif %}
 	<div class="section-content">
 		<br>
 		<h1>{{ company.name }}</h1>

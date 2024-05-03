@@ -65,7 +65,11 @@
 	<div class="container text-center">
 		<div class="d-flex justify-content-center">
 			{% for company in companies %}
+			{% if company.image_url %}
 			<div class="company-display" style="background-image: url('{{url_for('static', filename='images/uploads/' + company.image_url)}}')">
+			{% else %}
+			<div class="company-display">
+			{% endif %}
 				<a href="{{ url_for('companies.company', company_name=company.name) }}">
 					<button type="button" class="btn"><p>{{company.name}}</p>
 					</button>

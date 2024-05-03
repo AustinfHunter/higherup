@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container-fluid">
-	<h1 class="h1 text-center">Create Company</h1>
-	<form class="form-group w-50 m-auto" enctype="multipart/form-data" action="{{url_for('companies.create_company')}}" method="POST">
+	<h1 class="h1 text-center">{{'Edit Company' if edit else 'Create Company'}}</h1>
+	<form class="form-group w-50 m-auto" enctype="multipart/form-data" action="{{url_for('companies.create_company') if not edit else url_for('companies.edit_company', id=company.id)}}" method="POST">
 		{{ form.csrf_token }}
 		<div class="form-group m-auto mb-5">
 			<label for="name">{{ form.name.label }}</label>
@@ -32,6 +32,18 @@
 			<label for="webUrlCaption">{{ form.website_url_caption.label }}</label>
 			{{ form.website_url_caption(id="webUrlCaption", class="form-control") }}
 		</div>
+		{% if edit %}
+		<input class="mb-3 btn btn-success btn-lg m-auto" type="submit" value="Update Company">
+		{% else %}
 		<input class="mb-3 btn btn-success btn-lg m-auto" type="submit" value="Create Company">
+		{% endif %}
 	</form>
+	<h2 class="text-center">Edit {{'Another' if edit else 'Existing'}} Company</h2>
+	<div class="container-fluid w-50 m-auto">
+		{% for company in companies %}
+		<div class="card">
+			<a href="/companies/editcompany/{{company.id}}">{{company.name}}</a>
+		</div>
+		{% endfor %}
+	</div>
 	{% endblock %}
