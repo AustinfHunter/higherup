@@ -99,3 +99,6 @@ class User(UserMixin, db.Model):
         self.email = email
         self.password = bcrypt.generate_password_hash(password)
         self.is_admin = is_admin
+
+    def get_likes(self):
+        return self.liked_posts.all()

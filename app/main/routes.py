@@ -9,6 +9,7 @@ from app import db, bcrypt
 from app.main import bp
 from app.models.user import User
 from app.models.post import Post, PostLike
+from app.models.company import Company
 
 import sys
 
@@ -24,21 +25,6 @@ def index():
             user_likes=user_likes,
             posts=posts)
     return render_template('index.html', user=current_user, posts=posts)
-
-
-@bp.route('/posts')
-def posts():
-    posts = Post.get_popular_posts()
-    print(posts, file=sys.stdout)
-    if current_user.is_authenticated:
-        user_likes = current_user.liked_posts.all()
-        return render_template(
-            'search.html',
-            user=current_user,
-            user_likes=user_likes,
-            posts=posts
-        )
-    return render_template('search.html', user=current_user, posts=posts)
 
 
 @bp.route('/register', methods=["GET", "POST"])

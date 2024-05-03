@@ -63,39 +63,21 @@
 	<h1>Browse by Company</h1>
 	<br>
 	<div class="container text-center">
-		<div class="row">
-			<div class="col">
-				<a href="{{ url_for('main.company') }}"><button type="button" class="btn companyDisplay comOne"><p>Wells Fargo</p></button></a>
+		<div class="d-flex">
+			{% for company in companies %}
+			<div class="company-display" style="background-image: url('{{url_for('static', filename='images/uploads/' + company.image_url)}}')">
+				<a href="{{ url_for('companies.company', company_name=company.name) }}">
+					<button type="button" class="btn"><p>{{company.name}}</p>
+					</button>
+				</a>
 			</div>
-			<div class="col">
-				<button type="button" class="btn companyDisplay comTwo"><p>Hartford</p></button>
-			</div>
-			<div class="col">
-				<button type="button" class="btn companyDisplay comThree"><p>TIAA</p>></button>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<button type="button" class="btn companyDisplay comFour"><p>Deloitte</p>></button>
-			</div>
-			<div class="col">
-				<button type="button" class="btn companyDisplay comFive"><p>Fidelity</p>></button>
-			</div>
-			<div class="col">
-				<button type="button" class="btn companyDisplay comSix"><p>Others</p>></button>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
-</div>
 
-<br><br><br>
-
-<div class="popReviews">
-	<h1>Popular Reviews</h1>
-	<br> 
-</div>
-<div class="container-fluid">
-	{% from "post_list_macro.html" import list_posts %}
-	{{ list_posts(posts, user_likes) }}
-</div>
-{% endblock %}
+	<div class="container-fluid">
+		<h2>Popular Reviews</h2>
+		{% from "post_list_macro.html" import list_posts %}
+		{{ list_posts(posts, user_likes) }}
+	</div>
+	{% endblock %}

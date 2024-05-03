@@ -13,17 +13,6 @@ section{
     position: relative;
 }
 
-
-section::before{
-    background-image: url("comOne.jpg");
-    background-size: cover;
-    content: '';
-    position: absolute; 
-    filter: brightness(40%);
-    inset:0;
-}
-
-
 section h1,section h6, section a{
     color: white;
     isolation: isolate;
@@ -41,6 +30,29 @@ section h1,section h6, section a{
 .belowIntro{
     border-bottom: 2px solid black;
 }
+
+.bg-img {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	color: white;
+}
+
+.section-content {
+	font-size: 1.3rem;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.6);
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.section-content p {
+	margin: 0 3rem;
+}
+
 .progress-circle {
     font-size: 20px;
     margin: 20px;

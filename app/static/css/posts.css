@@ -48,17 +48,32 @@ section h1, section h6, .dropdowns{
     text-align: center;
 }
 
-.companyDisplay{
-    width: 150px;
-    height: 85px;
-    margin: 30px;
+.company-display{
+    width: 16rem;
+    height: 9rem;
+    margin: 0.5rem;
     position: relative;
+	background-size: cover;
 }
 
-.companyDisplay p{
+.company-display a p {
     color: white;
-    isolation: isolate;
-    padding-top: 20px;
+	font-size: 1.5rem;
+	text-decoration: none;
+}
+
+.company-display a:visited, .company-display a, .company-display a:hover  {
+	text-decoration: none;
+}
+
+.company-display button {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.6);
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .comOne::Before{

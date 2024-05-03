@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+	<h1 class="h1 text-center">Create Company</h1>
+	<form class="form-group w-50 m-auto" enctype="multipart/form-data" action="{{url_for('companies.create_company')}}" method="POST">
+		{{ form.csrf_token }}
+		<div class="form-group m-auto mb-5">
+			<label for="name">{{ form.name.label }}</label>
+			{{ form.name(id="name", class="form-control") }}
+		</div>
+		<div class="form-group m-auto mb-5">
+			<label for="description">{{ form.description.label }}</label>
+			{{ form.description(id="description", class="form-control", rows="6") }}
+		</div>
+		<div class="form-group m-auto mb-5">
+			{{ form.has_relationship_uncc(id="hasRelationship", class="form-check-input") }}
+			<label for="hasRelationship" class="form-check-label">{{ form.has_relationship_uncc.label }}</label>
+		</div>
+		<div class="form-group m-auto mb-5">
+			<label for="relationshipDesc">{{ form.uncc_relationship_desc.label }}</label>
+			{{ form.uncc_relationship_desc(id="relationshipDesc", class="form-control", rows="6") }}
+		</div>
+		<div class="form-group m-auto mb-5">
+			<label for="imageUpload">{{ form.image_upload.label }}</label>
+			{{ form.image_upload(id="imageUpload", class="form-control-file") }}
+		</div>
+		<div class="form-group m-auto mb-5">
+			<label for="webUrl">{{ form.website_url.label }}</label>
+			{{ form.website_url(id="webUrl", class="form-control") }}
+		</div>
+		<div class="form-group m-auto mb-5">
+			<label for="webUrlCaption">{{ form.website_url_caption.label }}</label>
+			{{ form.website_url_caption(id="webUrlCaption", class="form-control") }}
+		</div>
+		<input class="mb-3 btn btn-success btn-lg m-auto" type="submit" value="Create Company">
+	</form>
+	{% endblock %}
