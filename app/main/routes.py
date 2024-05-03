@@ -1,17 +1,12 @@
 from flask import render_template, flash, request, url_for, redirect
 from flask_login import login_user, logout_user, current_user
 
-from sqlalchemy import func
-
 from app.main.forms import RegistrationForm, LoginForm
 
 from app import db, bcrypt
 from app.main import bp
 from app.models.user import User
-from app.models.post import Post, PostLike
-from app.models.company import Company
-
-import sys
+from app.models.post import Post
 
 
 @bp.route('/')
@@ -69,15 +64,3 @@ def logout():
     logout_user()
     flash("You were successfully logged out", "success")
     return redirect(url_for("main.login"))
-
-
-@bp.route("/company")
-def company():
-    return render_template("companySpecific.html", user=current_user)
-
-
-@bp.route("/test-headless")
-def test_headless():
-    if current_user.is_authenticated:
-        return {"Authenticated": "true"}
-    return {"Authenticated": "false"}

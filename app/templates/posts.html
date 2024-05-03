@@ -60,10 +60,10 @@
 	</div>
 </section>
 <div class="companies">
-	<h1>Browse by Company</h1>
+	<h2>Browse by Company</h2>
 	<br>
 	<div class="container text-center">
-		<div class="d-flex">
+		<div class="d-flex justify-content-center">
 			{% for company in companies %}
 			<div class="company-display" style="background-image: url('{{url_for('static', filename='images/uploads/' + company.image_url)}}')">
 				<a href="{{ url_for('companies.company', company_name=company.name) }}">
@@ -73,10 +73,12 @@
 			</div>
 			{% endfor %}
 		</div>
+		<hr>
 	</div>
+</div>
 
-	<div class="container-fluid">
-		<h2>Popular Reviews</h2>
+	<div class="container-fluid mt-5">
+		<h2 class="text-center mb-4">Popular Reviews</h2>
 		{% from "post_list_macro.html" import list_posts %}
 		{{ list_posts(posts, user_likes) }}
 	</div>

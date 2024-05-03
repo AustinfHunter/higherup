@@ -15,7 +15,7 @@ class PostForm(FlaskForm):
     )
     content = TextAreaField(
         'Post Content',
-        validators=[validators.input_required(), validators.Length(250, 3000)],
+        validators=[validators.input_required(), validators.Length(150, 3000)],
         name="content"
     )
     topics = CheckboxQuerySelectMultipleField('Topics')
@@ -27,6 +27,6 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
     content = TextAreaField(
         'Comment',
-        validators=[validators.input_required(), validators.length(150, 1500)],
+        validators=[validators.input_required(), validators.length(50, 1500)],
         name='content'
     )

@@ -14,8 +14,8 @@ from app.companies.forms import CompanyForm
 @bp.route('/createcompany', methods=['GET', 'POST'])
 @login_required
 def create_company():
-    if not current_user.is_admin:
-        redirect(url_for("main.index"))
+    if current_user.is_admin is False:
+        return redirect(url_for("main.index"))
     form = CompanyForm()
     if form.validate_on_submit():
         company = Company(form.name.data)
