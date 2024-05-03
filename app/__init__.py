@@ -19,12 +19,7 @@ def create_app(config_class=Config):
     # Database setup
     db.init_app(app)
 
-    # Create an admin
-    # createAdmin(app)
-
-    # Add default data to DB
-    # addAllDefaults()
-
+    # Authentication setup
     login_manager.init_app(app)
 
     # Register blueprints

@@ -4,7 +4,6 @@ from app.models.jobtype import JobType
 from app.models.skill import Skill
 from app.models.company import Company
 from app.models.post import Post, PostLike, Comment
-from app.models.user import User
 from app.posts import bp
 from app.posts.forms import PostForm, CommentForm
 
@@ -20,15 +19,19 @@ def index():
     posts = Post.get_popular_posts()
     companies = Company.query.all()
     if current_user.is_authenticated:
-        user_likes = current_user.liked_posts.all()
         return render_template(
             'posts.html',
             user=current_user,
-            user_likes=user_likes,
+            user_likes=current_user.get_likes(),
             posts=posts,
             companies=companies
         )
-    return render_template('posts.html', user=current_user, posts=posts, companies=companies)
+    return render_template(
+        'posts.html',
+        user=current_user,
+        posts=posts,
+        companies=companies
+    )
 
 
 @bp.route('/<int:post_id>')
@@ -36,15 +39,13 @@ def post(post_id):
     form = CommentForm()
     post = Post.query.filter_by(id=post_id).first()
     comments = post.comments.all()
-    if current_user.is_authenticated:
-        user_likes = current_user.liked_posts.all()
     return render_template(
         'post.html',
         post=post,
         comments=comments,
         form=form,
         user=current_user,
-        user_likes=user_likes
+        user_likes=current_user.get_likes()
     )
 
 
