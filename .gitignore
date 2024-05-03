@@ -10,6 +10,9 @@ __pycache__/
 # Uploaded Content
 app/static/images/uploads/*
 
+# Mac stuff
+.DS_STORE
+
 # Distribution / packaging
 .Python
 build/
