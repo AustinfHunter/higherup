@@ -72,6 +72,7 @@ Run ```flask shell``` then run the following commands
 ```from app import db
 from app.util import startup
 startup.addAllDefaults(db) # Adds all default values to database
+startup.addPostDetails(db) # Adds companies and likes to posts
 startup.createAdmin(app, db) # creates a user with admin privileges
 ```
 Note: The environment variables ADMIN_UNAME, ADMIN_EMAIL, and ADMIN_PASSWORD must be set
