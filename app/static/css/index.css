@@ -106,17 +106,22 @@ footer {
 	/*justify-content: center; */
 }
 
+.arrow-container {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	margin-right: 1rem;
+}
 
 .arrow-icon {
 	font-size: 48px; /* Adjust the size of the arrow icon */
-	margin-right: 20px; /* Add spacing between arrow and post content */
 	align-self: flex-start;
 	color: green;
 }
 
 .number {
 	color: #666666;
-	margin-left: 10px;
 }
 
 .title-section{

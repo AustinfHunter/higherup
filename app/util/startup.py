@@ -88,6 +88,6 @@ def addDefaults(model: Model, defaults, db: SQLAlchemy, is_technical=False):
 def addAllDefaults(db):
     addDefaults(Skill, defaultSoftSkills, db)
     addDefaults(Skill, defaultTechnicalSkills, db, True)
-    addDefaults(Company, defaultCompanies, db)
+    # addDefaults(Company, defaultCompanies, db)
     addDefaults(JobType, defaultJobTypes, db)
     addDefaults(Topic, defaultTopics, db)

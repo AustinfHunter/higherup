@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}HigherUp{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/companySpecific.css')}}">
+{% endblock %}
+{% block content %}
+<section style='
+::before{
+	background-image: url({{ url_for('static', filename="images/uploads/" + company.image_url)  }});
+    background-size: cover;
+    content: "";
+    position: absolute; 
+    filter: brightness(40%);
+    inset:0;
+}'>
+	<br>
+	<h1>{{ company.name }}</h1>
+	<p>{{ company.description }}</p>
+	<a href="{{ company.website_url }}" target="_blank" rel="noreferrer"><button type="button" class="btn btn-light">{{ company.website_url_caption  }}</button></a>
+</section>
+<div class="container text-center mt-5 belowIntro">
+	<div class="row">
+		<div class="col">
+			<div class="row">
+				<div class="col">
+					<div class="progress-circle over50 p95">
+						<span>95%</span>
+						<div class="left-half-clipper">
+							<div class="first50-bar"></div>
+							<div class="value-bar"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-7 info">
+					<p><br>95% of reviewers rate the interview process a 3 out of 5.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="progress-circle over50 p75">
+						<span>75%</span>
+						<div class="left-half-clipper">
+							<div class="first50-bar"></div>
+							<div class="value-bar"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-7 info">
+					<p><br>75% of reviewers say interviews were mainly behavioral.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-7">
+			<!-- <img src="https://ci3.googleusercontent.com/meips/ADKq_NZE8Ebvv6ki15rO_wlzc42jcRLV4XBlsXUgj7ySb0za3TmTN4Q=s0-d-e1-ft#http://card.png" id="iconImg"> -->
+			<img src="{{ url_for('static', filename='images/card.png') }}">
+		</div>
+	</div>
+	<h1><br>UNCC and {{ company.name  }}<br><br></h1>
+	<p>{{ company.uncc_relationship_desc}}</p>
+</div>
+<div class="container mt-5">
+	<h1>Student/Alumni Reviews</h1>
+</div>
+{% endblock %}

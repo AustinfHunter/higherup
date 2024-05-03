@@ -1,12 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-
 from flask_login import LoginManager
 
 from config import Config
 
-# from app.util.startup import createAdmin, addAllDefaults
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -36,11 +34,12 @@ def create_app(config_class=Config):
     app.register_blueprint(user_bp, url_prefix="/users")
     from app.posts import bp as post_bp
     app.register_blueprint(post_bp, url_prefix="/posts")
+    from app.companies import bp as company_bp
+    app.register_blueprint(company_bp, url_prefix="/companies")
     return app
-
-from app.models.user import User
 
 
 @login_manager.user_loader
 def load_user(user_id):
+    from app.models.user import User
     return User.query.filter(User.id == int(user_id)).first()

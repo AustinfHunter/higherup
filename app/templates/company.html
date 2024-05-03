@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}HigherUp{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/companySpecific.css')}}">
+{% endblock %}
+{% block content %}
+<section class="bg-img" style='background-image: url({{ url_for('static', filename="images/uploads/" + company.image_url)  }});'>
+	<div class="section-content">
+		<br>
+		<h1>{{ company.name }}</h1>
+		<p>{{ company.description }}</p>
+		<a href="{{ company.website_url }}" target="_blank" rel="noreferrer"><button type="button" class="btn btn-light">{{ company.website_url_caption  }}</button></a>
+	</div>
+</section>
+
+{% if company.has_relationship_uncc %}
+<div class="container-fluid mt-5">
+	<h2 class="text-center">UNCC and {{ company.name  }}</h2>
+	<p class="ml-5 mr-5">{{ company.uncc_relationship_desc}}</p>
+	<hr>
+</div>
+{% endif %}
+
+{% if posts|length == 0 %}
+<div class="container-fluid w-100 text-center">
+	<p class="lead text-center mt-5">Sorry, it looks like there aren't any posts about {{ company.name }}</p>
+	<button class="text-center btn btn-success btn-md"><a class="text-center text-white" href="/posts">Back to Posts</a></button>
+</div>
+{% else %}
+<div class="container-fluid w-100">
+	<h1 class="h1 text-center mt-5">Student/Alumni Reviews</h1>
+	{% from "post_list_macro.html" import list_posts %}
+	{{ list_posts(posts, user_likes) }}
+</div>
+{% endif %}
+{% endblock %}
