@@ -1,7 +1,9 @@
 $( document ).ready(() => {
 	let likeButtons = $('[id^="like-"]');
-	console.log(likeButtons);
 	likeButtons.click(likePost);
+
+	let deleteButtons = $('[id^="delete-"]');
+	deleteButtons.click(deletePost);
 });
 
 const likePost = (e) => {
@@ -29,4 +31,17 @@ const likePost = (e) => {
 				likeCountElem.html(count);
 			}
 	})
+}
+
+const deletePost = (e) => {
+	if (confirm("Are you sure you want to delete this post?")) {
+		let id = e.target.id.split("-")[1];
+		$.ajax({
+			url: `/posts/deletepost/${id}`,
+			method: "DELETE",
+			})
+			.done(() => {
+				location.reload();
+		})
+	}
 }

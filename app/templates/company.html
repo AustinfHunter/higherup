@@ -29,7 +29,7 @@
 <div class="container-fluid w-100">
 	<h1 class="h1 text-center mt-5">Student/Alumni Reviews</h1>
 	{% from "post_list_macro.html" import list_posts %}
-	{{ list_posts(posts, user_likes) }}
+	{{ list_posts(posts, user_likes, user) }}
 </div>
 {% endif %}
 {% endblock %}
