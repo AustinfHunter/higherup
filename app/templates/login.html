@@ -8,13 +8,9 @@
 		</div>
 		<div class="col m-5 p-5">
 			<form class="form-group" method="POST" action="{{url_for('main.login') }}">
-				{% with messages = get_flashed_messages(with_categories=true) %}
-				{% if messages %}
-				{% for category, message in messages %}
-				<div class="mb-3 alert alert-{{ category }}">{{ message }}</div>
+				{% for message in get_flashed_messages(with_categories=true) %}
+				<div class="mb-3 alert alert-{{ message.0 }}">{{ message.1 }}</div>
 				{% endfor %}
-				{% endif %}
-				{% endwith %}
 				{{ form.csrf_token }}
 				{{ form.email(class="form-control form-control-lg mb-3 border border-success p-2", style="--bs-border-opacity: .5;", placeholder="Email") }}
 				{% if form.email.errors %}

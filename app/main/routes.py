@@ -51,10 +51,8 @@ def login():
                 user.password,
                 request.form["password"]):
             login_user(user)
-            print("User logged in")
             return redirect(url_for("main.index"))
         else:
-            print("user not logged in")
             flash("Invalid email or password.", "danger")
     return render_template("login.html", form=form)
 
