@@ -29,7 +29,7 @@ def create_company():
         company.website_url_caption = form.website_url_caption.data
         db.session.add(company)
         db.session.commit()
-    return render_template("companyEditor.html", form=form)
+    return render_template("companyEditor.html", form=form, user=current_user)
 
 
 @bp.route('/<string:company_name>')
